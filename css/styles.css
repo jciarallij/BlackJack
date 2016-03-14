@@ -1,0 +1,43 @@
+.the-table {
+	background-color: green;
+	border:5px solid #663300;
+	border-radius: 10px;
+	margin-top: 30px;
+	padding: 30px 0px;
+}
+
+.card {
+	color:black;
+	background-color: white;
+	height: 120px;
+	padding: 10px;
+	margin: 10px;
+	float: left;
+}
+
+.card.empty {
+	background-color: #ddd;
+	border: dashed 1px black;
+}
+
+.col-sm-2.card {
+	width: 11%;
+	margin: 10px;
+}
+
+.dealer-hand-wrapper, .player-hand-wrapper {
+	color: white;
+	font-size:18px;
+}
+
+.dealer-hand-wrapper span, .player-hand-wrapper span {
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+
+.action-buttons button {
+	width: 100%;
+	background-color: #0f0f0f;
+	color: white;
+}
