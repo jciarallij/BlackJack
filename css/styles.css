@@ -1,23 +1,43 @@
 .the-table {
-	background-color: green;
+	background-image: url("../img/woodtex2.png");
+	background-size: 1530px 1027px;
 	border:5px solid #663300;
 	border-radius: 10px;
 	margin-top: 30px;
-	padding: 30px 0px;
+	padding: 150px 20px;
+	width: 80%;
 }
 
 .card {
 	color:black;
-	background-color: white;
-	height: 120px;
+	background-color: transparent;
+	height: 240px;
 	padding: 10px;
 	margin: 10px;
 	float: left;
+	
+
+}
+
+.card img{
+	width: 174px;
+	height: 240px;
+	position: relative;
+	left: -9%;
+	top: -5%;
+
+
 }
 
 .card.empty {
-	background-color: #ddd;
-	border: dashed 1px black;
+	/*background-color: #ddd;*/
+	/*border: dashed 1px black;*/
+	background-image: url("../img/cardback0.png");
+	background-size: 174px 245px;
+	background-position: -4px -3px;
+}
+.card.empty.special{
+
 }
 
 .col-sm-2.card {
@@ -27,7 +47,7 @@
 
 .dealer-hand-wrapper, .player-hand-wrapper {
 	color: white;
-	font-size:18px;
+	font-size: 30px;
 }
 
 .dealer-hand-wrapper span, .player-hand-wrapper span {
@@ -39,5 +59,23 @@
 .action-buttons button {
 	width: 100%;
 	background-color: #0f0f0f;
+	color: white;
+}
+
+#message {
+	color: white;
+	font-size: 30px;
+}
+
+/*img {
+	width: 165px;
+	height: 240px;
+
+}*/
+
+.action-res-button button {
+	width: 100%;
+	text-align: center;
+	background-color: red;
 	color: white;
 }

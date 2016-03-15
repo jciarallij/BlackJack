@@ -1,8 +1,23 @@
-// Deal needs to call shuffle and assign the deck
-// Setup a players starting hand
-// Place the card in the correct spot
+// What if the player gets BlackJack on the deal?
+// How can a card be 11, 12, or 13?
+// Can't a Ace = 1 or 11?
+// The player can keep hitting and standing after the game is over
+// There is no win counter
+// There is no wagering system
+// There is no "deck" to draw from
+// There red cards aren't red
+// There is no delay on the cards displaying (its instant)
+// You can see both dealer cards on dealerHand
+
+
+
+
+
 var theDeck = [];
 var placeInDeck = 0;
+var playerTotalCards = 2;
+var dealerTotalCards = 2;
+
 $(document).ready(function(){
 	$('button').click(function(){
 		var clickedButton = ($(this).attr('id'));
@@ -12,9 +27,10 @@ $(document).ready(function(){
 			hit();
 		}else if(clickedButton == 'stand-button'){
 			stand();
-		}
+		}else if(clickedButton == 'reset-button'){
+			reset();
+		};
 	});
-
 
 });
 
@@ -30,34 +46,44 @@ $(document).ready(function(){
 		calculateTotal(playerHand, 'player');
 		calculateTotal(dealerHand, 'dealer');
 
-	}
+	
+}
 
-	function calculateTotal(hand, who){
+	function calculateTotal(hand, whoTurn){
 		var total = 0;
 		for(i = 0; i < hand.length; i++){
-			// purposely not fixing, 11, 12, or 13, or 1 = 11
-			var cardValue = hand[i].slice(0, -1);
-			console.log(cardValue);
+			var cardValue = Number(hand[i].slice(0, -1));
+			// console.log(cardValue);
+			total += cardValue;
 		}
-	}
+		var idToGet = '.' + whoTurn + '-total'
+		$(idToGet).html(total);
+		if(total > 21){
+			bust(whoTurn);
+		}
+		return total;
 
+}
+
+	
 	function placeCard(card, who, slot){
 		var currId = '#' + who + '-card-' + slot;
-		$(currId).removeClass('empty');
-		$(currId).html(card);
+		if(card[card.length-1] == 'r'){
+			//do something special
+			$(currId).removeClass('empty');
+			$(currId).html('<img src="img/' + card +'.png">');			
+		}else{
+			$(currId).removeClass('empty');
+			$(currId).html('<img src="img/' + card +'.png">');
+		}
 
-	}
+}
 
 	function shuffleDeck(){
-		// fill the deck, in order, for now.
-		// Deck is made up of ....
-		// - 52 Cards + 5 random cards = 57 cards
-		// - 4 Suits
-		// --, h, s, d, c, r
-		// r = random Cards
-		// s1 = hearts, s2 = spades, s3 = diamonds, s4 = clubs
-		for(var s = 1; s <= 4; s++){
+		theDeck = [];
+		for(var s = 1; s <= 5; s++){    
 			var suit = "";
+			var lengthSuit = 13;
 			if(s === 1){
 				suit = 'h';
 			}else if(s === 2){
@@ -66,16 +92,15 @@ $(document).ready(function(){
 				suit = 'd';
 			}else if(s === 4){
 				suit = 'c';
-			// }else if (s === 5){
-			// 	suit = 'r';
+			}else if (s === 5){
+				suit = 'r';
+				lengthSuit = 5;
 			}
-			for (i = 1; i<=13; i++){
+			for (i = 1; i<=lengthSuit; i++){
 				theDeck.push(i+suit);
+				
 			}
 		}
-		// console.log(theDeck);
-		// console.log(theDeck);
-		// Now, let's shuffle the deck.
 		var numberOfTimesToShuffle = 500;
 		for(i=1; i<numberOfTimesToShuffle; i++){
 			card1 = Math.floor(Math.random() * theDeck.length);
@@ -89,6 +114,95 @@ $(document).ready(function(){
 		}
 
 }
+
+	function hit(){
+		var slot = " ";
+		if (playerTotalCards == 2) {
+			slot = "three";
+		} else if(playerTotalCards == 3){
+			slot = "four";
+		} else if(playerTotalCards == 4){
+			slot = "five";
+		} else if(playerTotalCards == 5){
+			slot = "six";
+		}
+
+
+		placeCard(theDeck[placeInDeck], 'player', slot);
+		playerHand.push(theDeck[placeInDeck]);
+		placeInDeck++;
+		playerTotalCards++;
+		calculateTotal(playerHand, 'player');
+
+}
+
+	function stand(){
+		// What happens to player? Nothing.
+		var dealerHas = calculateTotal(dealerHand, 'dealer');
+		var dealerTotal = $('.dealer-total').html();
+		while(dealerTotal < 17){
+			if(dealerTotalCards == 2){
+				slot = "three";
+			} else if(dealerTotalCards == 3){
+			slot = "four";
+			} else if(dealerTotalCards == 4){
+			slot = "five";
+			} else if(dealerTotalCards == 5){
+			slot = "six";
+			}
+
+
+			placeCard(theDeck[placeInDeck], 'dealer', slot);
+
+			dealerHand.push(theDeck[placeInDeck]);
+			dealerTotalCards++;
+			placeInDeck++;
+			calculateTotal(dealerHand, 'dealer');
+			dealerTotal = $('.dealer-total').html();
+		}
+	checkWin();
+
+}
+
+	function checkWin(){
+		var playerHas = Number($('.player-total').html());
+		var dealerHas = Number($('.dealer-total').html());
+		// console.log(playerHas + '----------' + dealerHas);
+		if(dealerHas > 21){
+			bust('dealer');
+		} else {
+			if(playerHas > dealerHas){
+				$('#message').html('You have beaten the dealer!');
+			} else if (dealerHas > playerHas) {
+				$('#message').html('Sorry, the dealer has beaten you.');
+			} else {
+				$('#message').html('It\s a push!!');
+			}
+		}
+}
+
+
+	function bust(who){
+		if(who === 'player'){
+			$('#message').html('You have busted!')
+		} else {
+			$('#message').html('The dealer has busted!')
+		}
+
+}
+
+	function reset(){
+		$('.card').addClass('empty');
+		$('.card').html('');
+		$('.player-total').html('0');
+		$('.dealer-total').html('0');
+		$('#message').html(' ');
+		playerTotalCards = 2;
+		dealerTotalCards = 2;
+}
+
+
+
 
 
 
