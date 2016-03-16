@@ -17,6 +17,9 @@ var theDeck = [];
 var placeInDeck = 0;
 var playerTotalCards = 2;
 var dealerTotalCards = 2;
+var special;
+$('#hit-button').prop('disabled', true);
+$('#stand-button').prop('disabled', true);
 
 $(document).ready(function(){
 	$('button').click(function(){
@@ -45,37 +48,61 @@ $(document).ready(function(){
 		placeCard(dealerHand[1], 'dealer', 'two');
 		calculateTotal(playerHand, 'player');
 		calculateTotal(dealerHand, 'dealer');
+		$('#dealer-card-two').addClass('empty');
+		$('#deal-button').prop('disabled',true);
+		$('#hit-button').prop('disabled', false);
+		$('#stand-button').prop('disabled', false);
+		$('.dealer-total').html('0');
 
 	
 }
 
 	function calculateTotal(hand, whoTurn){
+		console.log(hand)
 		var total = 0;
-		for(i = 0; i < hand.length; i++){
-			var cardValue = Number(hand[i].slice(0, -1));
-			// console.log(cardValue);
-			total += cardValue;
+		var hasAce = 0;
+		
+		for(i=0; i<hand.length; i++){
+		// purposely NOT fixing 11, 12, or 13, or 1 = 11
+		var cardValue = Number(hand[i].slice(0, -1));
+		// console.log(cardValue);
+		
+		if((cardValue === 11) || (cardValue === 12) || (cardValue === 13)){
+			cardValue = 10;
 		}
-		var idToGet = '.' + whoTurn + '-total'
-		$(idToGet).html(total);
-		if(total > 21){
-			bust(whoTurn);
+		
+		if(cardValue === 1){
+			hasAce = 1
+			if(total + 11 <=21){
+				cardValue = 11;
+			}else{
+				cardValue = 1;
+			}
+		}
+		total += cardValue;
+	}	
+		if((hasAce) && (total>21)){
+			total -= 10;
+		}	
+	var idToGet ='.' + whoTurn + '-total';
+	$(idToGet).html(total);
+	if(total > 21){
+		bust(whoTurn);
 		}
 		return total;
-
 }
 
 	
 	function placeCard(card, who, slot){
 		var currId = '#' + who + '-card-' + slot;
-		if(card[card.length-1] == 'r'){
+		// if(card[card.length-1] == 'r'){
 			//do something special
 			$(currId).removeClass('empty');
 			$(currId).html('<img src="img/' + card +'.png">');			
-		}else{
-			$(currId).removeClass('empty');
-			$(currId).html('<img src="img/' + card +'.png">');
-		}
+		// }else{
+		// 	$(currId).removeClass('empty');
+		// 	$(currId).html('<img src="img/' + card +'.png">');
+		// }
 
 }
 
@@ -133,6 +160,11 @@ $(document).ready(function(){
 		placeInDeck++;
 		playerTotalCards++;
 		calculateTotal(playerHand, 'player');
+		$('#dealer-card-one').removeClass('empty');
+		$('#dealer-card-two').removeClass('empty');
+		placeCard();
+		$('.dealer-total').show('total');
+		calculateTotal(dealerHand, 'dealer');
 
 }
 
@@ -160,7 +192,13 @@ $(document).ready(function(){
 			calculateTotal(dealerHand, 'dealer');
 			dealerTotal = $('.dealer-total').html();
 		}
-	checkWin();
+		checkWin();
+		$('#dealer-card-one').removeClass('empty');
+		$('#dealer-card-two').removeClass('empty');
+		placeCard();
+		$('.dealer-total').show('total');
+		$('#hit-button').prop('disabled', true);
+		calculateTotal(dealerHand, 'dealer');
 
 }
 
@@ -172,11 +210,11 @@ $(document).ready(function(){
 			bust('dealer');
 		} else {
 			if(playerHas > dealerHas){
-				$('#message').html('You have beaten the dealer!');
+				$('#message').html('You Win! Dealer loses!');
 			} else if (dealerHas > playerHas) {
-				$('#message').html('Sorry, the dealer has beaten you.');
+				$('#message').html('Sorry! Dealer Wins!');
 			} else {
-				$('#message').html('It\s a push!!');
+				$('#message').html('It\'s a push!!');
 			}
 		}
 }
@@ -188,6 +226,8 @@ $(document).ready(function(){
 		} else {
 			$('#message').html('The dealer has busted!')
 		}
+		$('#hit-button').prop('disabled',true);
+		$('#stand-button').prop('disabled',true);
 
 }
 
@@ -199,6 +239,10 @@ $(document).ready(function(){
 		$('#message').html(' ');
 		playerTotalCards = 2;
 		dealerTotalCards = 2;
+		$('#hit-button').prop('disabled', true);
+		$('#stand-button').prop('disabled', true);
+		$('#deal-button').prop('disabled',false);
+		$('#message').html("Click Deal!");
 }
 
 

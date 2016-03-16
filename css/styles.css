@@ -60,6 +60,7 @@
 	width: 100%;
 	background-color: #0f0f0f;
 	color: white;
+	margin-top: 30px;
 }
 
 #message {
@@ -78,4 +79,5 @@
 	text-align: center;
 	background-color: red;
 	color: white;
+	margin-top: 50px;
 }
