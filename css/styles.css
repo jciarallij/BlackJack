@@ -36,6 +36,15 @@
 	background-size: 174px 245px;
 	background-position: -4px -3px;
 }
+
+/*.card.cover {
+	/*background-color: #ddd;*/
+	/*border: dashed 1px black;*/
+/*	background-image: url("../img/cardback0.png");
+	background-size: 174px 245px;
+	background-position: -4px -3px;
+	position: relative;*/
+
 .card.empty.special{
 
 }
@@ -80,4 +89,13 @@
 	background-color: red;
 	color: white;
 	margin-top: 50px;
+}
+
+.coins {
+	width: 100%;
+}
+
+.money, .bet-mon {
+	font-size: 15px;
+	color:white;
 }
