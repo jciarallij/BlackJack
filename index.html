@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BlackJack</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="the-table col-sm-8 col-sm-offset-1">
+                <div class="row message">
+                    <div id="message" class="col-sm-12 text-center"></div>
+                </div>
+                <div class="row">
+                    <div class="dealer-hand-wrapper col-sm-2">
+                        Dealer Total<span class="dealer-total col-sm-2">0</span>
+                    </div>
+                    <div id="dealer-card-one" class="card empty col-sm-2"></div>
+                    <div id="dealer-card-two" class="card empty col-sm-2"></div>
+                    <div id="dealer-card-three" class="card empty col-sm-2"></div>
+                    <div id="dealer-card-four" class="card empty col-sm-2"></div>
+                    <div id="dealer-card-five" class="card empty col-sm-2"></div>
+                    <div id="dealer-card-six" class="card empty col-sm-2"></div>
+                </div>
+                <div class="row">
+                    <div class="player-hand-wrapper col-sm-2">
+                        Player Total<span class="player-total col-sm-2">0</span>
+                    </div>
+                    <div id="player-card-one" class="card empty col-sm-2"></div>
+                    <div id="player-card-two" class="card empty col-sm-2"></div>
+                    <div id="player-card-three" class="card empty col-sm-2"></div>
+                    <div id="player-card-four" class="card empty col-sm-2"></div>
+                    <div id="player-card-five" class="card empty col-sm-2"></div>
+                    <div id="player-card-six" class="card empty col-sm-2"></div>
+                </div>
+                <div class="row action-buttons">
+                    <div class="col-sm-1 col-sm-offset-4">
+                        <button id="deal-button">Deal</button>
+                    </div>
+                    <div class="col-sm-1 col-sm-offset-1">
+                        <button id="hit-button">Hit</button>
+                    </div>
+                    <div class="col-sm-1 col-sm-offset-1">
+                        <button id="stand-button">Stand</button>
+                    </div>
+                    <div class="action-res-button">
+                        <div class="col-sm-1">
+                            <button id="reset-button">Reset</button>
+                        </div>
+                    </div>
+                </div>
+                <!--                 <div class="row">
+                    <div id="betting-area" class="col-sm-8 col-sm-offset">
+                        <div class="money">Money Pouch: $<span class="bank"></span>200</div>
+                        <div class="bet-mon">Bet: $<span class="bet"></span>0</div>
+                        <div class="coins-area col-sm-8 col-sm-offset-2">
+                            <div class="col-sm-4">
+                                <img class="reset-gamemode" src="img/coinbag2.png">
+                            </div>
+                            <div class="col-sm-2">
+                                <img class="coins" src="img/silvercoin2.png">
+                            </div>
+                            <div class="col-sm-2">
+                                <img class="coins" src="img/goldcoin.png">
+                            </div>
+                            <div class="col-sm-2">
+                                <img class="coins" src="img/gem.png">
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 .the-table {
-	background-image: url("../img/woodtex2.png");
+	background-image: url("../img/woodtex2.jpg");
 	background-size: 1530px 1027px;
 	border:5px solid #663300;
 	border-radius: 10px;
@@ -15,8 +15,6 @@
 	padding: 10px;
 	margin: 10px;
 	float: left;
-	
-
 }
 
 .card img{
@@ -25,28 +23,12 @@
 	position: relative;
 	left: -9%;
 	top: -5%;
-
-
 }
 
 .card.empty {
-	/*background-color: #ddd;*/
-	/*border: dashed 1px black;*/
-	background-image: url("../img/cardback0.png");
+	background-image: url("../img/cardback0.jpg");
 	background-size: 174px 245px;
 	background-position: -4px -3px;
-}
-
-/*.card.cover {
-	/*background-color: #ddd;*/
-	/*border: dashed 1px black;*/
-/*	background-image: url("../img/cardback0.png");
-	background-size: 174px 245px;
-	background-position: -4px -3px;
-	position: relative;*/
-
-.card.empty.special{
-
 }
 
 .col-sm-2.card {
@@ -70,6 +52,8 @@
 	background-color: #0f0f0f;
 	color: white;
 	margin-top: 30px;
+	border-radius: 5px;
+	border-color: lightgray;
 }
 
 #message {
@@ -77,17 +61,12 @@
 	font-size: 30px;
 }
 
-/*img {
-	width: 165px;
-	height: 240px;
-
-}*/
-
 .action-res-button button {
 	width: 100%;
 	text-align: center;
 	background-color: red;
 	color: white;
+	border-radius: 5px;
 	margin-top: 50px;
 }
 

@@ -1,18 +1,3 @@
-// What if the player gets BlackJack on the deal?
-// How can a card be 11, 12, or 13?
-// Can't a Ace = 1 or 11?
-// The player can keep hitting and standing after the game is over
-// There is no win counter
-// There is no wagering system
-// There is no "deck" to draw from
-// There red cards aren't red
-// There is no delay on the cards displaying (its instant)
-// You can see both dealer cards on dealerHand
-
-
-
-
-
 var theDeck = [];
 var placeInDeck = 0;
 var playerTotalCards = 2;
@@ -134,7 +119,7 @@ $(document).ready(function(){
 	function placeCard(card, who, slot){
 		var currId = '#' + who + '-card-' + slot;
 		$(currId).removeClass('empty');
-		$(currId).html('<img src="img/' + card +'.png">');
+		$(currId).html('<img src="img/' + card +'.jpg">');
 
 }
 
