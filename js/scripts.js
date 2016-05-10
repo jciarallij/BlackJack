@@ -46,7 +46,7 @@ $(document).ready(function(){
 		$('#hit-button').prop('disabled', false);
 		$('#stand-button').prop('disabled', false);
 		$('.dealer-total').html('0');
-		$('#message').html("");
+		$('#message').html("Hit or Stand?");
 
 
 	
@@ -119,7 +119,7 @@ $(document).ready(function(){
 	function placeCard(card, who, slot){
 		var currId = '#' + who + '-card-' + slot;
 		$(currId).removeClass('empty');
-		$(currId).html('<img src="img/' + card +'.jpg">');
+		$(currId).html('<img src="img/' + card +'.jpeg">');
 
 }
 
@@ -176,6 +176,7 @@ $(document).ready(function(){
 }
 
 	function hit(){
+		$('#message').html("Hit Again?");
 		var slot = " ";
 		if (playerTotalCards == 2) {
 			slot = "three";

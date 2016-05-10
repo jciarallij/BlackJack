@@ -1,80 +1,80 @@
+body {
+    background: url("../img/woodtex.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .the-table {
-	background-image: url("../img/woodtex2.jpg");
-	background-size: 1530px 1027px;
-	border:5px solid #663300;
-	border-radius: 10px;
-	margin-top: 30px;
-	padding: 150px 20px;
-	width: 80%;
+	margin-top: 5%;
 }
 
 .card {
-	color:black;
-	background-color: transparent;
-	height: 240px;
-	padding: 10px;
-	margin: 10px;
-	float: left;
+    color: black;
+    background-color: transparent;
+    height: 240px;
+    padding: 10px;
+    margin: 10px;
+    float: left;
 }
 
-.card img{
-	width: 174px;
-	height: 240px;
-	position: relative;
-	left: -9%;
-	top: -5%;
+.card img {
+    width: 174px;
+    height: 240px;
+    position: relative;
+    left: -9%;
+    top: -5%;
 }
 
 .card.empty {
-	background-image: url("../img/cardback0.jpg");
-	background-size: 174px 245px;
-	background-position: -4px -3px;
+    background-image: url("../img/cardback.jpg");
+    background-repeat: no-repeat;
+    background-size: 174px 245px;
+    background-position: -4px -3px;
 }
 
 .col-sm-2.card {
-	width: 11%;
-	margin: 10px;
+    width: 11%;
+    margin: 10px;
 }
 
-.dealer-hand-wrapper, .player-hand-wrapper {
-	color: white;
-	font-size: 30px;
+.dealer-hand-wrapper,
+.player-hand-wrapper {
+    color: white;
+    font-size: 30px;
 }
 
-.dealer-hand-wrapper span, .player-hand-wrapper span {
-	width: 100%;
-	display: block;
-	text-align: center;
-}
-
-.action-buttons button {
-	width: 100%;
-	background-color: #0f0f0f;
-	color: white;
-	margin-top: 30px;
-	border-radius: 5px;
-	border-color: lightgray;
+.dealer-hand-wrapper span,
+.player-hand-wrapper span {
+    display: block;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    left: -70px;
 }
 
 #message {
-	color: white;
-	font-size: 30px;
-}
-
-.action-res-button button {
-	width: 100%;
-	text-align: center;
-	background-color: red;
-	color: white;
-	border-radius: 5px;
-	margin-top: 50px;
+    color: white;
+    font-size: 40px;
+    float: left;
+	position: relative;
+	top: -70px;
+	padding: 20px;
 }
 
 .coins {
-	width: 100%;
+    width: 100%;
 }
 
-.money, .bet-mon {
-	font-size: 15px;
-	color:white;
+.money,
+.bet-mon {
+    font-size: 15px;
+    color: white;
+}
+
+.btn {
+	width: 100px;
+	margin-top: 30px;
+	margin-right: 20px;
 }
