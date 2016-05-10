@@ -31,7 +31,7 @@ body {
     background-image: url("../img/cardback.jpg");
     background-repeat: no-repeat;
     background-size: 174px 245px;
-    background-position: -4px -3px;
+    background-position: 0px -3px;
 }
 
 .col-sm-2.card {

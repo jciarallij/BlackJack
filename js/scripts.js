@@ -119,7 +119,7 @@ $(document).ready(function(){
 	function placeCard(card, who, slot){
 		var currId = '#' + who + '-card-' + slot;
 		$(currId).removeClass('empty');
-		$(currId).html('<img src="img/' + card +'.jpeg">');
+		$(currId).html('<img src="img/' + card +'.jpg">');
 
 }
 
